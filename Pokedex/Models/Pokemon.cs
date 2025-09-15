@@ -10,6 +10,8 @@ namespace Pokedex.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Numero { get; set; }
 
+        public string Nome { get; set; }
+
         [Required(ErrorMessage = "A região é obrigatória.")]
         public uint RegiaoId { get; set; }
         [ForeignKey("RegiaoId")]
