@@ -8,7 +8,7 @@ namespace Pokedex.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Numero { get; set; }
+        public uint Numero { get; set; }
 
         public string Nome { get; set; }
 
