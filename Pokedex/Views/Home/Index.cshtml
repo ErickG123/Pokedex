@@ -1,6 +1,10 @@
 ﻿@model List<Pokemon>
 @{
     ViewData["Title"] = "Home Page";
+    string BackgroundColor(string cor)
+    {
+        return cor.Replace("1)", "0.75)");
+    }
 }
 
 <div class="pt-5 container">
@@ -54,18 +58,22 @@
 
         @foreach (Pokemon pokemon in Model)
         {
+            <!-- Card Pokemon - Inicio -->
             <div class="col">
-                <a href="#" class="text-decoration-none">
-                    <div class="card" style="background-color: @pokemon.Tipos[0].Tipo.Cor">
+                <a asp-action="Details" asp-route-id="@pokemon.Numero" class="text-decoration-none">
+                    <div class="card" style="background-color: @(pokemon.Tipos.Count > 0 ? BackgroundColor(pokemon.Tipos[0].Tipo.Cor) : "bg-secondary")">
                         <img src="@pokemon.Imagem" class="card-img-top" alt="@pokemon.Nome" />
                         <div class="card-body">
                             <h5 class="card-text mb-1 text-white">Nº @pokemon.Numero.ToString("000")</h5>
                             <h3 class="card-title text-dark">@pokemon.Nome</h3>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex gap-2 my-2">
-                                    @foreach (PokemonTipo pokemonTipo in pokemon.Tipos) {
+                                    @foreach (PokemonTipo pokemonTipo in pokemon.Tipos)
+                                    {
                                         <a href="#" class="btn text-white"
-                                        style="background-color: @pokemonTipo.Tipo.Cor">@pokemonTipo.Tipo.Nome</a>
+                                            style="background-color:@pokemonTipo.Tipo.Cor">
+                                            @pokemonTipo.Tipo.Nome
+                                        </a>
                                     }
                                 </div>
                             </div>
@@ -73,10 +81,12 @@
                     </div>
                 </a>
             </div>
+            <!-- Card Pokemon - Fim -->
         }
 
         <div id="zeroPokemon" class="col-lg-12 text-center" hidden>
             <h1 class="my-3 text-danger">Nenhum Pokemon Encontrado</h1>
         </div>
     </div>
+
 </div>

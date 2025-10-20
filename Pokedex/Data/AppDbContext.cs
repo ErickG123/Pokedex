@@ -7,7 +7,6 @@ namespace Pokedex.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
         {
-
         }
 
         public DbSet<Genero> Generos { get; set; }
@@ -22,5 +21,6 @@ namespace Pokedex.Data
             modelBuilder.Entity<PokemonTipo>()
                 .HasKey(pt => new { pt.PokemonNumero, pt.TipoId });
         }
+
     }
 }

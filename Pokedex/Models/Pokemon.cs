@@ -10,28 +10,30 @@ namespace Pokedex.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public uint Numero { get; set; }
 
-        public string Nome { get; set; }
-
-        [Required(ErrorMessage = "A região é obrigatória.")]
+        [Required(ErrorMessage = "Por favor, informe a região")]
         public uint RegiaoId { get; set; }
         [ForeignKey("RegiaoId")]
         public Regiao Regiao { get; set; }
 
-        [Required(ErrorMessage = "O gênero é obrigatório.")]
+        [Required(ErrorMessage = "Por favor, informe o gênero")]
         public uint GeneroId { get; set; }
         [ForeignKey("GeneroId")]
         public Genero Genero { get; set; }
 
+        [StringLength(30)]
+        [Required(ErrorMessage = "Por favor, informe o nome")]
+        public string Nome { get; set; }
+
         [StringLength(1000)]
         public string Descricao { get; set; }
 
-        [Column(TypeName = "double(5, 2)")]
-        [Required(ErrorMessage = "A altura é obrigatória.")]
+        [Column(TypeName = "double(5,2)")]
+        [Required(ErrorMessage = "Por favor, informe a altura")]
         public double Altura { get; set; } = 0;
 
-        [Column(TypeName = "double(7, 3)")]
-        [Required(ErrorMessage = "O peso é obrigatório.")]
-        public double Peso { get; set; } = 0;
+        [Column(TypeName = "double(7,3)")]
+        [Required(ErrorMessage = "Por favor, informe o peso")]
+        public double Peso { get; set; }
 
         [StringLength(200)]
         public string Imagem { get; set; }

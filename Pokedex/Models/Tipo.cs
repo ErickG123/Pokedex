@@ -10,7 +10,7 @@ namespace Pokedex.Models
         public uint Id { get; set; }
 
         [StringLength(30)]
-        [Required(ErrorMessage = "O nome é obrigatório.")]
+        [Required(ErrorMessage = "Por favor, informe o nome")]
         public string Nome { get; set; }
 
         [StringLength(25)]
